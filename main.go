@@ -27,6 +27,8 @@ func main() {
 		})
 	})
 
+	router.POST("/v1/getRules", GetRulesApiHandler)
+
 	router.POST("/v1/addRules", AddRulesApiHandler)
 
 	err = router.Run(":6565")
@@ -43,6 +45,18 @@ func AddRulesApiHandler(c *gin.Context) {
 		"status":  1,
 		"message": "Rules Created",
 		"payload": nil,
+	})
+
+}
+
+func GetRulesApiHandler(c *gin.Context) {
+
+	c.IndentedJSON(http.StatusCreated, gin.H{
+		"status":  1,
+		"message": "Rules Fetched Successfully",
+		"payload": gin.H{
+			"rules": "SomeRules",
+		},
 	})
 
 }
