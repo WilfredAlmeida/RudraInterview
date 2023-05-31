@@ -27,11 +27,23 @@ func main() {
 		})
 	})
 
+	router.POST("/v1/addRules", AddRulesApiHandler)
+
 	err = router.Run(":6565")
 	if err != nil {
 		fmt.Println(err.Error())
 		return
 	}
+
+}
+
+func AddRulesApiHandler(c *gin.Context) {
+
+	c.IndentedJSON(http.StatusCreated, gin.H{
+		"status":  1,
+		"message": "Rules Created",
+		"payload": nil,
+	})
 
 }
 
