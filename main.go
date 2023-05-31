@@ -31,6 +31,8 @@ func main() {
 
 	router.POST("/v1/addRules", AddRulesApiHandler)
 
+	router.POST("/v1/updateRuleStatus", UpdateStatusApiHandler)
+
 	err = router.Run(":6565")
 	if err != nil {
 		fmt.Println(err.Error())
@@ -58,6 +60,12 @@ func GetRulesApiHandler(c *gin.Context) {
 			"rules": "SomeRules",
 		},
 	})
+
+}
+
+func UpdateStatusApiHandler(c *gin.Context) {
+
+	c.IndentedJSON(http.StatusOK, nil)
 
 }
 
